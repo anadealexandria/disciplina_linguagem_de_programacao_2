@@ -1,6 +1,7 @@
 package view;
 
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import model.Cachorro;
@@ -18,10 +19,18 @@ public class Casa {
 		boolean flag = true;
 		
 		while(flag) {
-			System.out.print("Bem-vindo ao cadastro de cães:\n1-Cadastrar cão;\n2-Listar cães;\n3- Sair do programa;"
+			try {
+				System.out.print("Bem-vindo ao cadastro de cães:\n1-Cadastrar cão;\n2-Listar cães;\n3- Sair do programa;"
 					+ "\n(SÓ SERÁ ACEITO UMA DAS OPÇÕES ACIMA)\n");
-			int escolha = entrada.nextInt();
-		
+				int escolha = entrada.nextInt();
+			
+				if (escolha != 1 && escolha != 2 && escolha != 3) {
+					System.out.println("Escolha uma opção dentro do menu!!");
+					System.out.println();
+					continue;
+					}			 
+			
+			
 			switch (escolha) {
 				case 1:
 					System.out.print("Qual o primeiro nome do cãozinho?\n");
@@ -42,30 +51,41 @@ public class Casa {
 					break;
 					
 				case 2:
+					
 					for(int i = 0 ; i < cachorros.size(); i++) {
 						System.out.print("\nÍndice " + i + " " + cachorros.get(i));
 						System.out.println();
 					}
+					if(cachorros.size() == 0) {
+						System.out.println("Não há cães cadastrados!!");
+						System.out.println();
+						main(args);
+					}else {
+						System.out.println("\nSelecione um cãozinho da lista através do índice: ");
+						int caoEscolhido = entrada.nextInt();					
 					
-					System.out.println("\nSelecione um cãozinho da lista através do índice: ");
-					int caoEscolhido = entrada.nextInt();					
-					
-					manipularCachorro(cachorros.get(caoEscolhido), cachorros );
-					break;
-					
+						manipularCachorro(cachorros.get(caoEscolhido), cachorros );
+						break;
+					}
 				case 3:
+					System.out.println("Até a próxima!!");
 					System.exit(0);
 					}
+				} catch(InputMismatchException e) {
+					System.out.println("Digite um número!!\n Este número tem de estar dentro do menu!!");
+					System.out.println();
+					main(args);
+					
 				}
 		
 			}
 
 		}
 	
-
+}
 	
 	public static void manipularCachorro(Cachorro caoAtual, ArrayList<Cachorro> cachorros) {
-		try(Scanner entrada = new Scanner(System.in)){
+		Scanner entrada = new Scanner(System.in);
 		ArrayList<Cachorro> parceiros = new ArrayList<>();
 		
 				
@@ -112,6 +132,10 @@ public class Casa {
 						parceiros.add(cachorros.get(i));
 					}
 				}
+				if (parceiros.size() == 0) {
+					System.out.println("Não há parceiros disponíveis!!");
+					return;
+				}
 				
 				for (int i = 0 ; i < parceiros.size() ; i++){
 					System.out.println("\nOs parceiros disponíveis para cruzar são:\n\n"
@@ -133,9 +157,7 @@ public class Casa {
 		}
 	}
 	
-	
 
-}
 
 
 
