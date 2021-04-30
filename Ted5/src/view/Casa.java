@@ -96,7 +96,7 @@ public class Casa {
 					System.out.print("\nEscolhas uma das opções abaixo:\nB- Buscar bolinha\nS- Saltar\nG- Girar"
 							+ "\n(SÓ SERÁ ACEITO UMA DAS OPÇÕES ACIMA)\n");
 					char escolhaBrincadeira = entrada.next().charAt(0);
-					caoAtual.brincar(escolhaBrincadeira);
+					
 					System.out.println("A energia do seu cãozinho é: " + caoAtual.brincar(escolhaBrincadeira));
 				}else {
 					System.out.println("\nSeu cãozinho não tem energia para brincar!");
@@ -106,8 +106,8 @@ public class Casa {
 			case 4:
 				
 				for (int i = 0 ; i < cachorros.size() ; i++) {
-					boolean parceirosPossiveis = caoAtual.podeCruzar(cachorros.get(i));
-					
+					boolean parceirosPossiveis = caoAtual.podeCruzar(cachorros.get(i).getCachorro());
+					System.out.println(parceirosPossiveis);
 					if(parceirosPossiveis) {
 						parceiros.add(cachorros.get(i));
 					}
@@ -121,7 +121,7 @@ public class Casa {
 				System.out.println("\nQual cãozinho você quer cruzar com o cão atual? (Escolha o índice) ");
 				int caoParaCruzar = entrada.nextInt();
 				
-				System.out.println("A energia do seu cãozinho é: " + caoAtual.cruzar(parceiros.get(caoParaCruzar)));
+				caoAtual.cruzar(parceiros.get(caoParaCruzar).getCachorro());
 				
 				break;
 		

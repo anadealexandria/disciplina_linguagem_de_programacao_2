@@ -71,7 +71,7 @@ public class DadosCachorro {
 	
 	public String toString() {
 		return "\nNome: " + nome + "\nRaça: " + raca + "\nSexo: " + sexo +
-				"\nIdade: " + idade + "\nEnergia: " + energia + "\nNúmero de Filhotes: " + numeroFilhotes;
+				"\nIdade: " + idade + "\nEnergia: " + this.energia + "\nNúmero de Filhotes: " + numeroFilhotes;
 	}
 	
 	
