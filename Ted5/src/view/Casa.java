@@ -40,6 +40,16 @@ public class Casa {
 					String raca = entrada.next().toLowerCase();
 					System.out.print("Qual o sexo do cãozinho?(F/M)\n");
 					char sexo = entrada.next().charAt(0);
+					boolean flag1 = true;
+					while(flag1){
+						if((sexo != 'M' && sexo != 'F')) {
+							System.out.println("Só é aceito F ou M!\n");
+							System.out.print("Qual o sexo do cãozinho?(F/M)\n");
+							sexo = entrada.next().charAt(0);
+						}else {
+							flag1 = false;
+						}
+					}
 					System.out.print("Qual a idade do cãozinho?\n");
 					int idade = entrada.nextInt();
 				
@@ -127,7 +137,7 @@ public class Casa {
 				
 				for (int i = 0 ; i < cachorros.size() ; i++) {
 					boolean parceirosPossiveis = caoAtual.podeCruzar(cachorros.get(i).getCachorro());
-					System.out.println(parceirosPossiveis);
+					
 					if(parceirosPossiveis) {
 						parceiros.add(cachorros.get(i));
 					}
@@ -136,10 +146,9 @@ public class Casa {
 					System.out.println("Não há parceiros disponíveis!!");
 					return;
 				}
-				
+				System.out.println("\nOs parceiros disponíveis para cruzar são:\n");
 				for (int i = 0 ; i < parceiros.size() ; i++){
-					System.out.println("\nOs parceiros disponíveis para cruzar são:\n\n"
-							+ "Índice " + i + " " + parceiros.get(i));
+					System.out.println("\nÍndice " + i + " " + parceiros.get(i));
 				}
 				
 				System.out.println("\nQual cãozinho você quer cruzar com o cão atual? (Escolha o índice) ");
