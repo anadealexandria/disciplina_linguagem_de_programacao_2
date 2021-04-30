@@ -133,9 +133,7 @@ public class Casa {
 		}
 	}
 	
-	public static String obterDados(Cachorro cachorro) {
-		return cachorro.toString();
-	}
+	
 
 }
 
